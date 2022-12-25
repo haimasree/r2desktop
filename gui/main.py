@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.filedialog as fd
+
 # def increase():
 #     value=int(lbl_value["text"])
 #     lbl_value["text"] = f"{value + 1}"
@@ -53,8 +54,10 @@ import tkinter.filedialog as fd
 
 # window.mainloop()
 
+
 def run_telomere():
     print("Run Telomere analyzer")
+
 
 def open_file():
     """Open a file for editing."""
@@ -84,6 +87,7 @@ def save_file():
         # output_file.write(text)
     window.title(f"Telomere-Analyzer - {filepath}")
 
+
 if __name__ == "__main__":
     window = tk.Tk()
     window.title("Telomere-Analyzer")
@@ -94,7 +98,7 @@ if __name__ == "__main__":
     frm_entries = tk.Frame(window, relief=tk.RAISED, bd=2)
     frm_buttons = tk.Frame(window, relief=tk.RAISED, bd=2)
     frm_labels = tk.Frame(window, relief=tk.RAISED, bd=2)
-    
+
     btn_open = tk.Button(frm_buttons, text="Open", command=open_file)
     btn_save = tk.Button(frm_buttons, text="Select", command=save_file)
 
@@ -111,11 +115,15 @@ if __name__ == "__main__":
 
     ent_input = tk.Entry(frm_entries)
     ent_output = tk.Entry(frm_entries)
-    
-    var_fasta = tk.IntVar()
-    var_fastq = tk.IntVar()
-    fasta_chkbtn = tk.Checkbutton(frm_entries, text="Fasta", variable=var_fasta)
-    fastq_chkbtn = tk.Checkbutton(frm_entries, text="Fastq", variable=var_fastq)
+
+    file_type = tk.StringVar()
+    file_type.set("Fasta")
+    fasta_chkbtn = tk.Radiobutton(
+        frm_entries, text="Fasta", value="Fasta", variable=file_type
+    )
+    fastq_chkbtn = tk.Radiobutton(
+        frm_entries, text="Fastq", value="Fastq", variable=file_type
+    )
     fasta_chkbtn.grid(row=2, column=0)
     fastq_chkbtn.grid(row=2, column=1)
 

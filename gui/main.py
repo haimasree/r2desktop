@@ -6,7 +6,6 @@ def run_telomere():
     print(f"Input directory: {input_dir.get()}")
     print(f"Output directory: {output_dir.get()}")
     print(f"File type: {file_type.get()}")
-
     print("Run Telomere analyzer")
 
 
@@ -23,7 +22,7 @@ if __name__ == "__main__":
     window = tk.Tk()
     window.title("Telomere-Analyzer")
 
-    window.rowconfigure(0, minsize=150, weight=1)
+    window.rowconfigure(0, minsize=100, weight=1)
     window.columnconfigure(1, minsize=100, weight=1)
 
     input_dir = tk.StringVar()
@@ -47,8 +46,8 @@ if __name__ == "__main__":
     lbl_output.grid(row=1, column=0)
     lbl_filetype.grid(row=2, column=0)
 
-    ent_input = tk.Entry(frm_entries, textvariable=input_dir)
-    ent_output = tk.Entry(frm_entries, textvariable=output_dir)
+    ent_input = tk.Entry(frm_entries, textvariable=input_dir, width=100)
+    ent_output = tk.Entry(frm_entries, textvariable=output_dir, width=100)
 
     file_type = tk.StringVar()
     file_type.set("Fasta")

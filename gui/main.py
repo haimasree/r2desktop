@@ -92,8 +92,8 @@ if __name__ == "__main__":
     window = tk.Tk()
     window.title("Telomere-Analyzer")
 
-    window.rowconfigure(0, minsize=100, weight=1)
-    window.columnconfigure(1, minsize=100, weight=1)
+    window.rowconfigure(0, minsize=150, weight=1)
+    window.columnconfigure(1, minsize=150, weight=1)
 
     frm_entries = tk.Frame(window, relief=tk.RAISED, bd=2)
     frm_buttons = tk.Frame(window, relief=tk.RAISED, bd=2)

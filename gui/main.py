@@ -53,6 +53,9 @@ import tkinter.filedialog as fd
 
 # window.mainloop()
 
+def run_telomere():
+    print("Run Telomere analyzer")
+
 def open_file():
     """Open a file for editing."""
     filepath = fd.askopenfilename(
@@ -76,8 +79,9 @@ def save_file():
     if not filepath:
         return
     with open(filepath, mode="w", encoding="utf-8") as output_file:
+        pass
         # text = txt_edit.get("1.0", tk.END)
-        output_file.write(text)
+        # output_file.write(text)
     window.title(f"Telomere-Analyzer - {filepath}")
 
 if __name__ == "__main__":
@@ -87,11 +91,10 @@ if __name__ == "__main__":
     window.rowconfigure(0, minsize=100, weight=1)
     window.columnconfigure(1, minsize=100, weight=1)
 
-    frm_entries = tk.Frame(window,  relief=tk.RAISED, bd=2)
+    frm_entries = tk.Frame(window, relief=tk.RAISED, bd=2)
     frm_buttons = tk.Frame(window, relief=tk.RAISED, bd=2)
     frm_labels = tk.Frame(window, relief=tk.RAISED, bd=2)
     
-
     btn_open = tk.Button(frm_buttons, text="Open", command=open_file)
     btn_save = tk.Button(frm_buttons, text="Select", command=save_file)
 
@@ -102,23 +105,28 @@ if __name__ == "__main__":
     lbl_output = tk.Label(frm_labels, text="Output directory", padx=5, pady=5)
     lbl_filetype = tk.Label(frm_labels, text="Choose file type", padx=5)
 
-
     lbl_input.grid(row=0, column=0)
     lbl_output.grid(row=1, column=0)
     lbl_filetype.grid(row=2, column=0)
 
     ent_input = tk.Entry(frm_entries)
     ent_output = tk.Entry(frm_entries)
+    
     var_fasta = tk.IntVar()
-    tk.Checkbutton(frm_entries, text="Fasta", variable=var_fasta).grid(row=2, column=0, sticky='w')
     var_fastq = tk.IntVar()
-    tk.Checkbutton(frm_entries, text="Fastq", variable=var_fastq).grid(row=3, column=0, sticky='w')
+    fasta_chkbtn = tk.Checkbutton(frm_entries, text="Fasta", variable=var_fasta)
+    fastq_chkbtn = tk.Checkbutton(frm_entries, text="Fastq", variable=var_fastq)
+    fasta_chkbtn.grid(row=2, column=0)
+    fastq_chkbtn.grid(row=2, column=1)
 
-    ent_input.grid(row=0, column=0, padx=5, pady=5)
+    ent_input.grid(row=0, column=0, padx=5, pady=5, sticky="ew")
     ent_output.grid(row=1, column=0, padx=5)
 
     frm_labels.grid(row=0, column=0, sticky="nsew")
-    frm_entries.grid(row=0, column=1, sticky="nsew")
+    frm_entries.grid(row=0, column=1, sticky="ns")
     frm_buttons.grid(row=0, column=2, sticky="nsew")
+
+    telomere_btn = tk.Button(window, text="Run Telomere Analyzer", command=run_telomere)
+    telomere_btn.grid(row=1, column=0, columnspan=3, sticky="ew", padx=5, pady=5)
 
     window.mainloop()

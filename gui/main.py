@@ -119,11 +119,11 @@ if __name__ == "__main__":
     fasta_chkbtn.grid(row=2, column=0)
     fastq_chkbtn.grid(row=2, column=1)
 
-    ent_input.grid(row=0, column=0, padx=5, pady=5, sticky="ew")
-    ent_output.grid(row=1, column=0, padx=5)
+    ent_input.grid(row=0, column=0, columnspan=3, padx=5, pady=5, sticky="ew")
+    ent_output.grid(row=1, column=0, columnspan=3, padx=5, pady=5, sticky="ew")
 
     frm_labels.grid(row=0, column=0, sticky="nsew")
-    frm_entries.grid(row=0, column=1, sticky="ns")
+    frm_entries.grid(row=0, column=1, sticky="nsew")
     frm_buttons.grid(row=0, column=2, sticky="nsew")
 
     telomere_btn = tk.Button(window, text="Run Telomere Analyzer", command=run_telomere)

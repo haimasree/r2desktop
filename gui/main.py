@@ -1,70 +1,22 @@
 import tkinter as tk
 import tkinter.filedialog as fd
 
-# def increase():
-#     value=int(lbl_value["text"])
-#     lbl_value["text"] = f"{value + 1}"
 
-# def decrease():
-#     value=int(lbl_value["text"])
-#     lbl_value["text"] = f"{value - 1}"
-
-# window = tk.Tk()
-# window.rowconfigure(0, minsize=50, weight=1)
-# window.columnconfigure([0, 1, 2], minsize=50, weight=1)
-
-# btn_decrease = tk.Button(master=window, text="-", command=decrease)
-# btn_decrease.grid(row=0, column=0, sticky="nsew")
-
-# lbl_value = tk.Label(master=window, text="0")
-# lbl_value.grid(row=0, column=1)
-
-# btn_increase = tk.Button(master=window, text="+", command=increase)
-# btn_increase.grid(row=0, column=2, sticky="nsew")
-
-# window.mainloop()
-
-# def fahrenheit_to_celsius():
-#     """Convert the value for Fahrenheit to Celsius and insert the
-#     result into lbl_result.
-#     """
-#     fahrenheit = ent_temperature.get()
-#     celsius = (5 / 9) * (float(fahrenheit) - 32)
-#     lbl_result["text"] = f"{round(celsius, 2)} \N{DEGREE CELSIUS}"
-
-# window = tk.Tk()
-# window.title("Temparature converter")
-# window.resizable(width=False, height=False)
-# frm_entry = tk.Frame(master=window)
-# ent_temperature = tk.Entry(master=frm_entry, width=10)
-# lbl_temp = tk.Label(master=frm_entry, text="F")
-# ent_temperature.grid(row=0, column=0, sticky="e")
-# lbl_temp.grid(row=0, column=1, sticky="w")
-
-# btn_convert = tk.Button(
-#     master=window,
-#     text="\N{RIGHTWARDS BLACK ARROW}",
-#     command=fahrenheit_to_celsius
-# )
-# lbl_result = tk.Label(master=window, text="C")
-
-# frm_entry.grid(row=0, column=0, padx=10)
-# btn_convert.grid(row=0, column=1, pady=10)
-# lbl_result.grid(row=0, column=2, padx=10)
-
-# window.mainloop()
 def run_telomere():
+    print(f"Input directory: {input_dir.get()}")
+    print(f"Output directory: {output_dir.get()}")
+    print(f"File type: {file_type.get()}")
+
     print("Run Telomere analyzer")
 
 
 def get_input():
     input_dir.set(fd.askdirectory())
-    window.title(f"Telomere-Analyzer - {input_dir}")
+    window.title(f"Telomere-Analyzer - {input_dir.get()}")
 
 
 def get_output():
     output_dir.set(fd.askdirectory())
-    window.title(f"Telomere-Analyzer - {output_dir}")
 
 
 if __name__ == "__main__":
@@ -72,7 +24,7 @@ if __name__ == "__main__":
     window.title("Telomere-Analyzer")
 
     window.rowconfigure(0, minsize=150, weight=1)
-    window.columnconfigure(1, minsize=150, weight=1)
+    window.columnconfigure(1, minsize=100, weight=1)
 
     input_dir = tk.StringVar()
     output_dir = tk.StringVar()

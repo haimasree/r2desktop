@@ -1,0 +1,3 @@
+[submodule "Telomere-Analyzer"]
+	path = Telomere-Analyzer
+	url = https://github.com/Dan-Lt/Telomere-Analyzer.git

@@ -54,15 +54,15 @@ if __name__ == "__main__":
     ent_output = tk.Entry(frm_entries, textvariable=output_dir, width=40)
 
     file_type = tk.StringVar()
-    file_type.set("Fasta")
-    fasta_chkbtn = tk.Radiobutton(
-        frm_entries, text="Fasta", value="Fasta", variable=file_type
-    )
+    file_type.set("Fastq")
     fastq_chkbtn = tk.Radiobutton(
         frm_entries, text="Fastq", value="Fastq", variable=file_type
     )
-    fasta_chkbtn.grid(row=2, column=0)
-    fastq_chkbtn.grid(row=2, column=1)
+    fasta_chkbtn = tk.Radiobutton(
+        frm_entries, text="Fasta", value="Fasta", variable=file_type
+    )
+    fastq_chkbtn.grid(row=2, column=0)
+    fasta_chkbtn.grid(row=2, column=1)
 
     ent_input.grid(row=0, column=0, columnspan=3, padx=5, pady=5, sticky="ew")
     ent_output.grid(row=1, column=0, columnspan=3, padx=5, pady=5, sticky="ew")

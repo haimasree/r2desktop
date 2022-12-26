@@ -1,11 +1,19 @@
 # r2desktop
-A test for converting existing R code (or package) to a desktop application
+A small proof of concept GUI app to run R code with some user provided options.
 
-## Attempts
-1. https://www.r-bloggers.com/2014/04/deploying-desktop-apps-with-r/ 
+## Create a virtual environment
 
-2. https://realpython.com/python-gui-tkinter/
+```
+py -m venv env
+.\env\Scripts\activate
+pip install -r requirements.txt
+```
 
+## Run the code
+
+```
+py .\gui\main.py
+```
 
 ### Clone
 

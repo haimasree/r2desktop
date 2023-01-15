@@ -63,8 +63,8 @@ if __name__ == "__main__":
     fastq_chkbtn.grid(row=2, column=0)
     fasta_chkbtn.grid(row=2, column=1)
 
-    ent_input.pack(row=0, column=0, columnspan=5, padx=5, pady=5, sticky="ew")
-    ent_output.pack(row=1, column=0, columnspan=5, padx=5, pady=5, sticky="ew")
+    ent_input.grid(row=0, column=0, columnspan=5, padx=5, pady=5, sticky="ew")
+    ent_output.grid(row=1, column=0, columnspan=5, padx=5, pady=5, sticky="ew")
 
     frm_labels.grid(row=0, column=0, sticky="nsew")
     frm_entries.grid(row=0, column=1, sticky="nsew")

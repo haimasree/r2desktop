@@ -123,3 +123,8 @@ examples/rbp/example_files/variants.vcf.gz.tbi
 **/downloaded/**
 
 *.zarr
+*.gz
+
+output*/
+
+*.log

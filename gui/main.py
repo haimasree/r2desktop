@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import tkinter as tk
 import tkinter.filedialog as fd
 import subprocess
@@ -8,8 +9,13 @@ import sys
 def run_telomere():
     current_dir = Path(__file__).resolve().parent.parent
     if "win" in sys.platform:
+        r_install_path = os.getenv("R_HOME", "")
+        if not r_install_path:
+            print("R needs to be installed first")
+            exit()
+        rscript_path = Path(r_install_path) / "bin" / "Rscript"      
         command_list = [
-            "C:\\Program Files\\R\\R-4.2.2\\bin\\Rscript",
+            str(rscript_path),
             "--vanilla",
             str(current_dir / "Telomere-Analyzer" / "nanotel.R"),
         ]

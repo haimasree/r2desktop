@@ -3,14 +3,39 @@ import tkinter.filedialog as fd
 
 import rpy2.robjects as robjects
 
+import subprocess
+import sys
+
 def run_telomere():
-    r = robjects.r
-    r["source"]("rcode/preprocess.R")
-    capitalize_input_function_r = robjects.globalenv["capitalize_input"]
-    output_str_r = capitalize_input_function_r(
-        input_dir.get(), output_dir.get(), file_type.get()
-    )
-    print(f"Output from R = {output_str_r}")
+    
+    # with open("test.log", "wb") as f:
+    process = subprocess.Popen(["Rscript", "--vanilla", "Telomere-Analyzer/nanotel-multicore-10workers.R", input_dir.get(), output_dir.get(), file_type.get()], stdout=subprocess.PIPE)
+    for c in iter(lambda: process.stdout.read(1), b""):
+        sys.stdout.buffer.write(c)
+        # f.buffer.write(c)
+    # output = subprocess.run(
+    #     [
+    #         "Rscript",  # Assumption: will not run in windows anymore
+    #         "--vanilla",
+    #         "Telomere-Analyzer/nanotel-multicore-10workers.R",
+    #         input_dir.get(), 
+    #         output_dir.get(), 
+    #         file_type.get()
+    #     ],
+    #     stdout=subprocess.PIPE, 
+    #     stderr=subprocess.PIPE, 
+    #     text=True,
+    # )
+    # if output.returncode:
+    #     raise IOError(output)
+    # subprocess.run()  
+    # r = robjects.r
+    # r["source"]("Telomere-Analyzer/nanotel-multicore-10workers.R")(input_dir.get(), output_dir.get(), (file_type.get()])
+    # # telomere_r = robjects.globalenv["capitalize_input"]
+    # # output_str_r = telomere_r(
+    # #     input_dir.get(), output_dir.get(), file_type.get()
+    # # )[]
+    # print(f"Output from R = {telomere_r}")
 
 
 def get_input():

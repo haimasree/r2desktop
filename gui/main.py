@@ -1,3 +1,4 @@
+from pathlib import Path
 import tkinter as tk
 import tkinter.filedialog as fd
 import subprocess
@@ -5,17 +6,23 @@ import sys
 
 
 def run_telomere():
-
-    # with open("test.log", "wb") as f:
-    process = subprocess.Popen(
-        [
-            "Rscript",
+    current_dir = Path(__file__).resolve().parent.parent
+    if "win" in sys.platform:
+        command_list = [
+            "C:\\Program Files\\R\\R-4.2.2\\bin\\Rscript", 
             "--vanilla",
-            "Telomere-Analyzer/nanotel-multicore-10workers.R",
-            input_dir.get(),
-            output_dir.get(),
-            file_type.get(),
-        ],
+            str(current_dir / "Telomere-Analyzer" / "nanotel.R"),
+        ]
+    else:
+        command_list = [
+            "Rscript", 
+            "--vanilla",
+            str(current_dir / "Telomere-Analyzer" / "nanotel-multicore-10workers.R"),
+        ]
+
+    command_list.extend([input_dir.get(), output_dir.get(), file_type.get()])
+    process = subprocess.Popen(
+        command_list,
         stdout=subprocess.PIPE,
     )
     for c in iter(lambda: process.stdout.read(1), b""):

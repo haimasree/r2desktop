@@ -9,13 +9,13 @@ def run_telomere():
     current_dir = Path(__file__).resolve().parent.parent
     if "win" in sys.platform:
         command_list = [
-            "C:\\Program Files\\R\\R-4.2.2\\bin\\Rscript", 
+            "C:\\Program Files\\R\\R-4.2.2\\bin\\Rscript",
             "--vanilla",
             str(current_dir / "Telomere-Analyzer" / "nanotel.R"),
         ]
     else:
         command_list = [
-            "Rscript", 
+            "Rscript",
             "--vanilla",
             str(current_dir / "Telomere-Analyzer" / "nanotel-multicore-10workers.R"),
         ]
@@ -27,7 +27,8 @@ def run_telomere():
     )
     for c in iter(lambda: process.stdout.read(1), b""):
         sys.stdout.buffer.write(c)
-    
+
+
 def get_input():
     input_dir.set(fd.askdirectory())
     window.title(f"Telomere-Analyzer - {input_dir.get()}")
